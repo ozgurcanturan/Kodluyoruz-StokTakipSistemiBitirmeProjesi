@@ -11,10 +11,11 @@ import com.ders.ornek.repository.ProductReturnRepository;
 import com.ders.ornek.repository.SalesRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class IndividualCustomerManager implements IndividualCustomerService {
     @Autowired
     private IndividualCustomerRepository individualCustomerRepository;
