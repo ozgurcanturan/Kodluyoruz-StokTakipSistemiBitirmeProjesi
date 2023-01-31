@@ -1,6 +1,9 @@
 package com.ders.ornek.repository;
 
-import com.ders.ornek.entity.*;
+
+import com.ders.ornek.entity.Customer;
+import com.ders.ornek.entity.ProductReturn;
+import com.ders.ornek.entity.Stocks;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +14,5 @@ public interface ProductReturnRepository extends JpaRepository<ProductReturn, Lo
 
     List<ProductReturn> findAllProductReturnsByCustomerId(Customer customer);
 
-    List<ProductReturn> findAllProductReturnsByIndividualStockId(Stocks stocks);
+    List<ProductReturn> findAllProductReturnsByStocksId(Stocks stocks);
 }

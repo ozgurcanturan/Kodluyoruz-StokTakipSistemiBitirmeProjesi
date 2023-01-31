@@ -24,6 +24,9 @@ public class ProductReturn {
     @ManyToOne
     @JoinColumn(name = "customer_id",foreignKey = @ForeignKey(name = "FK_CUSTOMER_RETURN"))
     private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "stocks_id",foreignKey = @ForeignKey(name = "FK_STOCKS_RETURN"))
+    private Stocks stocks;
     @Column(name = "return_units")
     @Enumerated(EnumType.STRING)
     private StockUnits returnUnits;

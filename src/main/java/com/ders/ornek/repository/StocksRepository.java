@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface StocksRepository extends JpaRepository<Stocks, Long> {
-    List<Stocks> findAllStocks();
+    List<Stocks> findAllStocksById(Stocks stocks);
 
 }

@@ -65,7 +65,7 @@ public class ProductReturnManager implements ProductReturnService {
     @Override
     public List<ProductReturnResponseDto> findAllProductReturnByStockId(Long stockId) {
         Stocks stock = stocksRepository.findById(stockId).get();
-        List<ProductReturn> productReturnList = productReturnRepository.findAllProductReturnsByIndividualStockId(stock);
+        List<ProductReturn> productReturnList = productReturnRepository.findAllProductReturnsByStocksId(stock);
 
         List<ProductReturnResponseDto> productReturnResponseDtos = new ArrayList<>();
         for (ProductReturn productReturn : productReturnList) {
