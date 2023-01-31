@@ -11,7 +11,8 @@ public interface ProductReturnService {
 
     Long saveProductReturn(ProductReturnRequestDto productReturnRequestDto);
 
-    List<ProductReturnRepository> findAllProductReturnByCustomerId(Long customerId);
+    List<ProductReturnResponseDto> findAllProductReturnByCustomerId(Long customerId);
 
-    List<ProductReturnRepository> findAllProductReturnByStockId(Long stockId);
+    List<ProductReturnResponseDto> findAllProductReturnByStockId(Long stockId);
+    Boolean DeleteProductReturnById(Long productReturnId);
 }
