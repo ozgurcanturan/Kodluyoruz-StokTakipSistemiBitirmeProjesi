@@ -8,5 +8,5 @@ public class IndividualCustomerRequestDto {
     private String name;
     private String lastName;
     private double discount;
-    private int nationalId;
+    private String nationalId;
 }

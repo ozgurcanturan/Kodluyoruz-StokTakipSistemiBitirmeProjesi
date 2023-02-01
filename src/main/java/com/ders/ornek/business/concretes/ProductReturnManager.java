@@ -77,9 +77,14 @@ public class ProductReturnManager implements ProductReturnService {
 
     @Override
     public Boolean DeleteProductReturnById(Long productReturnId) {
-        ProductReturn productReturn = productReturnRepository.findById(productReturnId).get();
-        productReturnRepository.delete(productReturn);
-        //deleteById dene
-        return true;
+        if (productReturnId > 0) {
+            ProductReturn productReturn = productReturnRepository.findById(productReturnId).get();
+            productReturnRepository.delete(productReturn);
+            //deleteById dene
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

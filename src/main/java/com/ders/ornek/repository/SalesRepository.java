@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface SalesRepository extends JpaRepository<Sales, Long> {
+
     List<Sales> findAllSalesByCustomerId(Customer customer);
 
-    //List<Sales> findAllSalesByIndividualCustomerId(IndividualCustomer individualCustomer);
     List<Sales> findAllSalesByStockId(Stocks stocks);
 }

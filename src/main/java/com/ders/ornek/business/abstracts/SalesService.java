@@ -10,11 +10,10 @@ public interface SalesService {
 
     List<SalesResponseDto> findAllSales();
 
-    List<SalesResponseDto> findAllSalesByCorporateCustomerId(Long corporateCustomerId);
+    List<SalesResponseDto> findAllSalesByCustomerId(Long customerId);
 
-    List<SalesResponseDto> findAllSalesByIndividualCustomerId(Long individualCustomer);
 
     List<SalesResponseDto> findAllSalesByStockId(Long stockId);
 
-    Boolean deleteSalesById(Long SalesId);
+    Boolean deleteSalesById(Long salesId);
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/corporateCustomers")
+@RequestMapping("/customers")
 public class CorporateCustomersController {
 
     private CorporateCustomerService corporateCustomerService;
@@ -34,8 +34,14 @@ public class CorporateCustomersController {
     }
 
     @GetMapping("/findAllCorporateCustomersByReturnId")
-    public ResponseEntity<List<CorporateCustomerResponseDto>> findAllCorporateCustomersById(@RequestParam Long returnId) {
+    public ResponseEntity<List<CorporateCustomerResponseDto>> findAllCorporateCustomersByReturnId(@RequestParam Long returnId) {
         List<CorporateCustomerResponseDto> corporateCustomerResponseDtos = corporateCustomerService.findAllCorporateCustomersByReturnId(returnId);
+        return new ResponseEntity<>(corporateCustomerResponseDtos, HttpStatus.OK);
+    }
+
+    @GetMapping("/findAllCorporateCustomersBySalesId")
+    public ResponseEntity<List<CorporateCustomerResponseDto>> findAllCorporateCustomersBySalesId(@RequestParam Long salesId) {
+        List<CorporateCustomerResponseDto> corporateCustomerResponseDtos = corporateCustomerService.findAllCorporateCustomersBySalesId(salesId);
         return new ResponseEntity<>(corporateCustomerResponseDtos, HttpStatus.OK);
     }
 

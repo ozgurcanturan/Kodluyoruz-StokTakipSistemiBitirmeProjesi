@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface StocksService {
     Long saveStock(StocksRequestDto stocksRequestDto);
+
     List<StocksResponseDto> findAllStocks();
 
     Boolean deleteStock(Long stockId);
