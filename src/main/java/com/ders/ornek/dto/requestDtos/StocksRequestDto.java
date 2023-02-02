@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class StocksRequestDto {
     private long id;
+    private long barcode;
     private String stockName;
     private String stockCategory;
     private String stockUnits;

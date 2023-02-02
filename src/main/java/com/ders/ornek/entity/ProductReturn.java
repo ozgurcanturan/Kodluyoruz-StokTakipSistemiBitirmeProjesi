@@ -19,10 +19,10 @@ public class ProductReturn {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sales_id", foreignKey = @ForeignKey(name = "FK_SALES_RETURN"))
     private Sales salesId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id",foreignKey = @ForeignKey(name = "FK_CUSTOMER_RETURN"))
     private Customer customer;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stocks_id",foreignKey = @ForeignKey(name = "FK_STOCKS_RETURN"))
     private Stocks stocks;
     @Column(name = "return_units")
