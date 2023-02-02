@@ -2,10 +2,12 @@ package com.ders.ornek.configuration;
 
 import com.ders.ornek.entity.CorporateCustomer;
 import com.ders.ornek.entity.IndividualCustomer;
+import com.ders.ornek.entity.Sales;
 import com.ders.ornek.entity.Stocks;
 import com.ders.ornek.entity.enums.StockCategorys;
-import com.ders.ornek.entity.enums.StockUnits;
+import com.ders.ornek.entity.enums.Units;
 import com.ders.ornek.repository.CustomerRepository;
+import com.ders.ornek.repository.SalesRepository;
 import com.ders.ornek.repository.StocksRepository;
 import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 @Configuration
@@ -22,11 +25,15 @@ public class GeneralConfig {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    SalesRepository salesRepository;
+
 //    @PostConstruct
 //    public void initData() {
 //        initStock();
 //        initCorporateCustomerData();
 //        initIndividualCustomer();
+//        initSales();
 //    }
 
 
@@ -38,23 +45,26 @@ public class GeneralConfig {
     private void initStock() {
         Stocks stock = new Stocks();
         stock.setStockAmount(10);
+        stock.setBarcode("123456789012345");
         stock.setStockName("Banana");
         stock.setStockCategory(StockCategorys.BUTCHER);
-        stock.setStockUnits(StockUnits.KG);
+        stock.setUnits(Units.KG);
         stock.setUnitPrice(40);
 
         Stocks stock1 = new Stocks();
         stock1.setStockAmount(20);
+        stock1.setBarcode("123456789012346");
         stock1.setStockName("Cherry");
         stock1.setStockCategory(StockCategorys.BUTCHER);
-        stock1.setStockUnits(StockUnits.KG);
+        stock1.setUnits(Units.KG);
         stock1.setUnitPrice(20);
 
         Stocks stock2 = new Stocks();
         stock2.setStockAmount(100);
+        stock2.setBarcode("123456789012347");
         stock2.setStockName("Water");
         stock2.setStockCategory(StockCategorys.FOOD);
-        stock2.setStockUnits(StockUnits.PCS);
+        stock2.setUnits(Units.PCS);
         stock2.setUnitPrice(5);
 
 
@@ -91,6 +101,33 @@ public class GeneralConfig {
         individualCustomer1.setDiscount(0);
         individualCustomer1.setNationalId("12345678902");
         customerRepository.saveAll(Arrays.asList(individualCustomer, individualCustomer1));
+    }
+
+    private void initSales() {
+        IndividualCustomer individualCustomer = new IndividualCustomer();
+        individualCustomer.setName("Baki Emre");
+        individualCustomer.setLastName("Dönmez");
+        individualCustomer.setDiscount(0);
+        individualCustomer.setNationalId("12345678903");
+        customerRepository.save(individualCustomer);
+
+        Stocks stock = new Stocks();
+        stock.setStockAmount(10);
+        stock.setBarcode("123456789012349");
+        stock.setStockName("Mulberry");
+        stock.setStockCategory(StockCategorys.BUTCHER);
+        stock.setUnits(Units.KG);
+        stock.setUnitPrice(40);
+        stocksRepository.save(stock);
+
+        Sales sales = new Sales();
+        sales.setCustomer(individualCustomer);
+        sales.setSalesAmount(1);
+        sales.setSalesDate(LocalDate.now());
+        sales.setSalesUnit(Units.KG);
+        sales.setStock(stock);
+        sales.setSalePrice(5);
+        salesRepository.save(sales);
     }
 
 

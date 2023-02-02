@@ -8,6 +8,7 @@ public class SalesRequestDto {
     private long id;
     private long stockId;
     private String salesUnit;
+    private double salePrice;
     private double salesAmount;
     private LocalDate salesDate;
     private long customerId;

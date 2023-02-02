@@ -1,6 +1,6 @@
 package com.ders.ornek.entity;
 
-import com.ders.ornek.entity.enums.StockUnits;
+import com.ders.ornek.entity.enums.Units;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,9 +25,11 @@ public class Sales {
     private Stocks stock;
     @Column(name = "sales_unit")
     @Enumerated(EnumType.STRING)
-    private StockUnits salesUnits;
+    private Units salesUnit;
     @Column(name = "sales_amount")
     private double salesAmount;
+    @Column(name="sale_price")
+    private double salePrice;
     @Column(name = "sales_date")
     private LocalDate salesDate;
 

@@ -1,5 +1,5 @@
 package com.ders.ornek.entity.enums;
 
-public enum StockUnits {
+public enum Units {
     KG,PCS,PACKAGE
 }

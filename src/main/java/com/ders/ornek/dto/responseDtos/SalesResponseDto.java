@@ -9,6 +9,7 @@ public class SalesResponseDto {
     private long stockId;
     private String salesUnit;
     private double salesAmount;
+    private double salePrice;
     private LocalDate salesDate;
     private long customerId;
 }

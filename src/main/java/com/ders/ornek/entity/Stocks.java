@@ -1,7 +1,7 @@
 package com.ders.ornek.entity;
 
 import com.ders.ornek.entity.enums.StockCategorys;
-import com.ders.ornek.entity.enums.StockUnits;
+import com.ders.ornek.entity.enums.Units;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,8 +17,8 @@ public class Stocks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id;
-    @Column(name = "stock_barcode")
-    private long barcode;
+    @Column(name = "stock_barcode",nullable = true)
+    private String barcode;
     @Column(name = "stock_name")
     private String stockName;
     @Column(name = "stock_category")
@@ -26,7 +26,7 @@ public class Stocks {
     private StockCategorys stockCategory;
     @Column(name = "stock_units")
     @Enumerated(EnumType.STRING)
-    private StockUnits stockUnits;
+    private Units units;
     @Column(name = "stock_amount")
     private double stockAmount;
     @Column(name = "unit_price")

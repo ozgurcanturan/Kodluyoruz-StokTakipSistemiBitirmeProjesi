@@ -1,6 +1,6 @@
 package com.ders.ornek.entity;
 
-import com.ders.ornek.entity.enums.StockUnits;
+import com.ders.ornek.entity.enums.Units;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +27,7 @@ public class ProductReturn {
     private Stocks stocks;
     @Column(name = "return_units")
     @Enumerated(EnumType.STRING)
-    private StockUnits returnUnits;
+    private Units returnUnits;
     @Column(name = "product_return_amount")
     private double productReturnAmount;
     @Column(name = "product_return_message")
