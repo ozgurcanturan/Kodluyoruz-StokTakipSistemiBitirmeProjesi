@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class CustomerResponseDto {
-    private long id;
+    private Long id;
     private String name;
+    private Long discount;
 }

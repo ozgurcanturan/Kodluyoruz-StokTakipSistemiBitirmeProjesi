@@ -1,5 +1,6 @@
 package com.ders.ornek.dto.responseDtos;
 
+import com.ders.ornek.entity.enums.Units;
 import lombok.Data;
 
 @Data
@@ -8,7 +9,7 @@ public class StocksResponseDto {
     private String barcode;
     private String stockName;
     private String stockCategory;
-    private String stockUnits;
+    private Units units;
     private double stockAmount;
     private double unitPrice;
 }

@@ -17,7 +17,7 @@ public class Stocks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id;
-    @Column(name = "stock_barcode",nullable = true)
+    @Column(name = "stock_barcode", nullable = true)
     private String barcode;
     @Column(name = "stock_name")
     private String stockName;

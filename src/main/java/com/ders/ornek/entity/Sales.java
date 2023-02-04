@@ -6,14 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "sales")
+@Data
 public class Sales {
     @Id
     @Column
@@ -28,14 +28,23 @@ public class Sales {
     private Units salesUnit;
     @Column(name = "sales_amount")
     private double salesAmount;
-    @Column(name="sale_price")
+    @Column(name = "sale_price")
     private double salePrice;
     @Column(name = "sales_date")
-    private LocalDate salesDate;
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, style = "dd/MM/yyyy hh:mm", pattern = "dd/MM/yyyy hh:mm")
+//    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
+    private LocalDateTime salesDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "FK_SALES_CUSTOMER"))
     private Customer customer;
-//    @OneToMany(mappedBy = "id")
-//    private List<Stocks> stocks;
+
+
+    public void setSalesDate(LocalDateTime salesDate) {
+        salesDate = LocalDateTime.now();
+        this.salesDate = salesDate;
+    }
+
 }
+
+

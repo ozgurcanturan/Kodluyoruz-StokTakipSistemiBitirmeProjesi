@@ -4,6 +4,7 @@ import com.ders.ornek.business.abstracts.StocksService;
 import com.ders.ornek.dto.requestDtos.StocksRequestDto;
 import com.ders.ornek.dto.responseDtos.StocksResponseDto;
 import com.ders.ornek.entity.Stocks;
+import com.ders.ornek.exceptions.StockNotFoundException;
 import com.ders.ornek.repository.StocksRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -41,7 +43,10 @@ public class StocksManager implements StocksService {
 
     @Override
     public Boolean deleteStock(Long stockId) {
-        Stocks stocks = stocksRepository.findById(stockId).get();
+        Stocks stocks = stocksRepository.findById(stockId).orElseThrow(() -> new StockNotFoundException("Hata yakalandı, ID "+stockId+" bulunamadı.")
+        );
+
+
         stocksRepository.delete(stocks);
         return true;
     }

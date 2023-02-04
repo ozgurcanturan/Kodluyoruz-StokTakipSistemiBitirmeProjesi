@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Configuration
@@ -123,7 +124,6 @@ public class GeneralConfig {
         Sales sales = new Sales();
         sales.setCustomer(individualCustomer);
         sales.setSalesAmount(1);
-        sales.setSalesDate(LocalDate.now());
         sales.setSalesUnit(Units.KG);
         sales.setStock(stock);
         sales.setSalePrice(5);

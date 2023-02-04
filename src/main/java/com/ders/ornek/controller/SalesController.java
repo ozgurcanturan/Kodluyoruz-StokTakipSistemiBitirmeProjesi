@@ -40,7 +40,7 @@ public class SalesController {
 
     @GetMapping("/findAllSalesByCustomerId")
     public ResponseEntity<List<SalesResponseDto>> findAllSalesByCustomerId(@RequestParam Long customerId) {
-        List<SalesResponseDto> salesResponseDtos = salesService.findAllSalesByStockId(customerId);
+        List<SalesResponseDto> salesResponseDtos = salesService.findAllSalesByCustomerId(customerId);
         return new ResponseEntity<>(salesResponseDtos, HttpStatus.OK);
     }
 

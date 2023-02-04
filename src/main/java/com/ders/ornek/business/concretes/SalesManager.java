@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SalesManager implements SalesService {
@@ -51,7 +52,7 @@ public class SalesManager implements SalesService {
 
     @Override
     public List<SalesResponseDto> findAllSalesByCustomerId(Long customerId) {
-        Customer customer = customerRepository.findById(customerId).get();
+        Optional<Customer> customer = customerRepository.findById(customerId);
         List<Sales> salesList = salesRepository.findAllSalesByCustomerId(customer);
 
         List<SalesResponseDto> salesResponseDtos = new ArrayList<>();
@@ -70,7 +71,6 @@ public class SalesManager implements SalesService {
     public List<SalesResponseDto> findAllSalesByStockId(Long stockId) {
         Stocks stock = stocksRepository.findById(stockId).get();
         List<Sales> salesList = salesRepository.findAllSalesByStockId(stock);
-
 
         List<SalesResponseDto> salesResponseDtos = new ArrayList<>();
         for (Sales sales : salesList) {
