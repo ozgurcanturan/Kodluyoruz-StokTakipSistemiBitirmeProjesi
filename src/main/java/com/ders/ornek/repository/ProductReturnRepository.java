@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface ProductReturnRepository extends JpaRepository<ProductReturn, Long> {
 
-    List<ProductReturn> findAllProductReturnsByCustomerId(Customer customer);
+    List<ProductReturn> findAllProductReturnsByCustomerId(Long customerId);
 
-    List<ProductReturn> findAllProductReturnsByStocksId(Stocks stocks);
+    List<ProductReturn> findAllProductReturnsByStocksId(Long stocksId);
 }

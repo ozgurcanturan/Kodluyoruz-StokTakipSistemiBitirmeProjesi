@@ -10,7 +10,5 @@ import java.util.List;
 
 @Repository
 public interface CorporateCustomerRepository extends JpaRepository<CorporateCustomer, Long> {
-    List<CorporateCustomer> findAllCorporateCustomersById(Sales sales);
-    List<CorporateCustomer> findAllCorporateCustomersById(ProductReturn productReturn);
 
 }

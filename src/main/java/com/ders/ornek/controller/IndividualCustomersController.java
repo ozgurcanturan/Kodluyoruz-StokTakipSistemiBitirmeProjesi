@@ -33,19 +33,6 @@ public class IndividualCustomersController {
         return new ResponseEntity<>(individualCustomerId, HttpStatus.OK);
     }
 
-    @GetMapping("/findAllIndividualCustomersByReturnId")
-    public ResponseEntity<List<IndividualCustomerResponseDto>> findAllIndividualCustomersByReturnId(@RequestParam Long returnId) {
-        List<IndividualCustomerResponseDto> individualCustomerResponseDtos = individualcustomerService.findAllIndividualCustomersByReturnId(returnId);
-        return new ResponseEntity<>(individualCustomerResponseDtos, HttpStatus.OK);
-    }
-
-
-    @GetMapping("/findAllIndividualCustomersBySalesId")
-    public ResponseEntity<List<IndividualCustomerResponseDto>> findAllIndividualCustomersBySalesId(@RequestParam Long salesId) {
-        List<IndividualCustomerResponseDto> individualCustomerResponseDtos = individualcustomerService.findAllIndividualCustomersBySalesId(salesId);
-        return new ResponseEntity<>(individualCustomerResponseDtos, HttpStatus.OK);
-    }
-
     @DeleteMapping("/deleteIndividualCustomerById")
     public ResponseEntity<Boolean> deleteIndividualCustomerById(@RequestParam Long individualCustomerId) {
         boolean delete = individualcustomerService.deleteIndividualCustomerById(individualCustomerId);

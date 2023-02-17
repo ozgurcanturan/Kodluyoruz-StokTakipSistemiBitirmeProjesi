@@ -10,9 +10,5 @@ public interface IndividualCustomerService {
 
     List<IndividualCustomerResponseDto> findAllIndividualCustomers();
 
-    List<IndividualCustomerResponseDto> findAllIndividualCustomersBySalesId(Long salesId);
-
-    List<IndividualCustomerResponseDto> findAllIndividualCustomersByReturnId(Long productReturnId);
-
     boolean deleteIndividualCustomerById(Long individualCustomerId);
 }

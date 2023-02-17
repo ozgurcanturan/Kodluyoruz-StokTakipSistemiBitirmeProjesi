@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -43,11 +42,12 @@ public class StocksManager implements StocksService {
 
     @Override
     public Boolean deleteStock(Long stockId) {
-        Stocks stocks = stocksRepository.findById(stockId).orElseThrow(() -> new StockNotFoundException("Hata yakalandı, ID "+stockId+" bulunamadı.")
+        Stocks stocks = stocksRepository.findById(stockId).orElseThrow(() -> new StockNotFoundException("Hata yakalandı, ID " + stockId + " bulunamadı.")
         );
 
 
-        stocksRepository.delete(stocks);
+
+        stocksRepository.deleteById(stockId);
         return true;
     }
 }

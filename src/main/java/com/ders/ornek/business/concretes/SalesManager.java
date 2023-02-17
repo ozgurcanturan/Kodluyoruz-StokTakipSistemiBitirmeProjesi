@@ -3,9 +3,7 @@ package com.ders.ornek.business.concretes;
 import com.ders.ornek.business.abstracts.SalesService;
 import com.ders.ornek.dto.requestDtos.SalesRequestDto;
 import com.ders.ornek.dto.responseDtos.SalesResponseDto;
-import com.ders.ornek.entity.Customer;
 import com.ders.ornek.entity.Sales;
-import com.ders.ornek.entity.Stocks;
 import com.ders.ornek.repository.CustomerRepository;
 import com.ders.ornek.repository.SalesRepository;
 import com.ders.ornek.repository.StocksRepository;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SalesManager implements SalesService {
@@ -83,8 +80,11 @@ public class SalesManager implements SalesService {
 
     @Override
     public Boolean deleteSalesById(Long salesId) {
-        Sales sales = salesRepository.findById(salesId).get();
-        salesRepository.delete(sales);
-        return true;
+        if (salesId > 0) {
+            salesRepository.deleteById(salesId);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

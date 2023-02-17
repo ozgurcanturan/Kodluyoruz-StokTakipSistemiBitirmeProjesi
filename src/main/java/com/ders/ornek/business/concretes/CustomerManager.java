@@ -1,7 +1,6 @@
 package com.ders.ornek.business.concretes;
 
 import com.ders.ornek.business.abstracts.CustomerService;
-import com.ders.ornek.dto.responseDtos.CorporateCustomerResponseDto;
 import com.ders.ornek.dto.responseDtos.CustomerResponseDto;
 import com.ders.ornek.entity.Customer;
 import com.ders.ornek.repository.CustomerRepository;
@@ -21,16 +20,17 @@ public class CustomerManager implements CustomerService {
 
     @Override
     public List<CustomerResponseDto> findAllCustomers() {
-        Iterable<Customer> customers = customerRepository.findAll();
+        List<Customer> customers = customerRepository.findAll();
 
         List<CustomerResponseDto> customerResponseDtos = new ArrayList<>();
 
         for (Customer customer : customers) {
-            CustomerResponseDto customerResponseDto=modelMapper.map(customer,CustomerResponseDto.class);
+            CustomerResponseDto customerResponseDto = modelMapper.map(customer, CustomerResponseDto.class);
             customerResponseDtos.add(customerResponseDto);
         }
 
 
         return customerResponseDtos;
     }
+
 }

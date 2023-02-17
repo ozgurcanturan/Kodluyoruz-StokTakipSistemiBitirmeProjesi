@@ -4,7 +4,6 @@ import com.ders.ornek.entity.Customer;
 import com.ders.ornek.entity.Stocks;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data

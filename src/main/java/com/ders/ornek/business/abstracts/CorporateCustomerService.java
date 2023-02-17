@@ -8,9 +8,5 @@ import java.util.List;
 public interface CorporateCustomerService {
     Long saveCorporateCustomer(CorporateCustomerRequestDto corporateCustomerRequestDto);
     List<CorporateCustomerResponseDto> findAllCorporateCustomers();
-
-    List<CorporateCustomerResponseDto> findAllCorporateCustomersBySalesId(Long salesId);
-
-    List<CorporateCustomerResponseDto> findAllCorporateCustomersByReturnId(Long productReturnId);
     boolean deleteCorporateCustomerById(Long corporateCustomerId);
 }

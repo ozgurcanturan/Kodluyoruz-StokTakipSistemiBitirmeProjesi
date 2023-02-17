@@ -10,7 +10,4 @@ import java.util.List;
 
 @Repository
 public interface IndividualCustomerRepository extends JpaRepository<IndividualCustomer, Long> {
-    List<IndividualCustomer> findAllIndividualCustomersById(Sales sales);
-
-    List<IndividualCustomer> findAllIndividualCustomersById(ProductReturn productReturn);
 }

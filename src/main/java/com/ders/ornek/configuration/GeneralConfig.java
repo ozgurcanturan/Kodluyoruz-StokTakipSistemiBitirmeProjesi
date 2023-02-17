@@ -1,12 +1,10 @@
 package com.ders.ornek.configuration;
 
-import com.ders.ornek.entity.CorporateCustomer;
-import com.ders.ornek.entity.IndividualCustomer;
-import com.ders.ornek.entity.Sales;
-import com.ders.ornek.entity.Stocks;
+import com.ders.ornek.entity.*;
 import com.ders.ornek.entity.enums.StockCategorys;
 import com.ders.ornek.entity.enums.Units;
 import com.ders.ornek.repository.CustomerRepository;
+import com.ders.ornek.repository.ProductReturnRepository;
 import com.ders.ornek.repository.SalesRepository;
 import com.ders.ornek.repository.StocksRepository;
 import jakarta.annotation.PostConstruct;
@@ -15,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Configuration
@@ -28,13 +24,16 @@ public class GeneralConfig {
 
     @Autowired
     SalesRepository salesRepository;
+    @Autowired
+    ProductReturnRepository productReturnRepository;
 
 //    @PostConstruct
 //    public void initData() {
 //        initStock();
 //        initCorporateCustomerData();
 //        initIndividualCustomer();
-//        initSales();
+//        //initSales();
+//        initProductReturn();
 //    }
 
 
@@ -128,6 +127,41 @@ public class GeneralConfig {
         sales.setStock(stock);
         sales.setSalePrice(5);
         salesRepository.save(sales);
+    }
+
+    private void initProductReturn() {
+        IndividualCustomer individualCustomer = new IndividualCustomer();
+        individualCustomer.setName("Türkan");
+        individualCustomer.setLastName("Balta");
+        individualCustomer.setDiscount(0);
+        individualCustomer.setNationalId("12345641903");
+        customerRepository.save(individualCustomer);
+
+        Stocks stock = new Stocks();
+        stock.setStockAmount(10);
+        stock.setBarcode("123456789012349");
+        stock.setStockName("Mulberry");
+        stock.setStockCategory(StockCategorys.BUTCHER);
+        stock.setUnits(Units.KG);
+        stock.setUnitPrice(40);
+        stocksRepository.save(stock);
+
+        Sales sales = new Sales();
+        sales.setCustomer(individualCustomer);
+        sales.setSalesAmount(1);
+        sales.setSalesUnit(Units.KG);
+        sales.setStock(stock);
+        sales.setSalePrice(5);
+        salesRepository.save(sales);
+
+        ProductReturn productReturn = new ProductReturn();
+        productReturn.setSalesId(sales);
+        productReturn.setProductReturnAmount(0.5);
+        productReturn.setProductReturnMessage("üründe çürük çıkmış");
+        productReturn.setReturnUnits(Units.KG);
+        productReturn.setCustomer(individualCustomer);
+        productReturn.setStocks(stock);
+        productReturnRepository.save(productReturn);
     }
 
 

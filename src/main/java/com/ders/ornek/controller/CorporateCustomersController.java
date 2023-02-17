@@ -33,18 +33,6 @@ public class CorporateCustomersController {
         return new ResponseEntity<>(corporateCustomerResponseDtos, HttpStatus.OK);
     }
 
-    @GetMapping("/findAllCorporateCustomersByReturnId")
-    public ResponseEntity<List<CorporateCustomerResponseDto>> findAllCorporateCustomersByReturnId(@RequestParam Long returnId) {
-        List<CorporateCustomerResponseDto> corporateCustomerResponseDtos = corporateCustomerService.findAllCorporateCustomersByReturnId(returnId);
-        return new ResponseEntity<>(corporateCustomerResponseDtos, HttpStatus.OK);
-    }
-
-    @GetMapping("/findAllCorporateCustomersBySalesId")
-    public ResponseEntity<List<CorporateCustomerResponseDto>> findAllCorporateCustomersBySalesId(@RequestParam Long salesId) {
-        List<CorporateCustomerResponseDto> corporateCustomerResponseDtos = corporateCustomerService.findAllCorporateCustomersBySalesId(salesId);
-        return new ResponseEntity<>(corporateCustomerResponseDtos, HttpStatus.OK);
-    }
-
     @DeleteMapping("/deleteCorporateCustomerById")
     public ResponseEntity<Boolean> deleteCorporateCustomerById(@RequestParam Long corporateCustomerId) {
         boolean delete = corporateCustomerService.deleteCorporateCustomerById(corporateCustomerId);
