@@ -14,5 +14,5 @@ public class SalesResponseDto {
     private double salesAmount;
     private double salePrice;
     private LocalDateTime salesDate;
-    private Customer customerId;
+    private Customer customer;
 }

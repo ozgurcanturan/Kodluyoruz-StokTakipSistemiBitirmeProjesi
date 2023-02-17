@@ -49,14 +49,14 @@ public class SalesManager implements SalesService {
 
     @Override
     public List<SalesResponseDto> findAllSalesByCustomerId(Long customerId) {
-        Optional<Customer> customer = customerRepository.findById(customerId);
-        List<Sales> salesList = salesRepository.findAllSalesByCustomerId(customer);
+        List<Sales> salesList = salesRepository.findAllSalesByCustomerId(customerId);
 
         List<SalesResponseDto> salesResponseDtos = new ArrayList<>();
         for (Sales sales : salesList) {
 
             SalesResponseDto salesResponseDto = modelMapper.map(sales, SalesResponseDto.class);
             salesResponseDtos.add(salesResponseDto);
+
         }
 
 
@@ -66,8 +66,8 @@ public class SalesManager implements SalesService {
 
     @Override
     public List<SalesResponseDto> findAllSalesByStockId(Long stockId) {
-        Stocks stock = stocksRepository.findById(stockId).get();
-        List<Sales> salesList = salesRepository.findAllSalesByStockId(stock);
+
+        List<Sales> salesList = salesRepository.findAllSalesByStockId(stockId);
 
         List<SalesResponseDto> salesResponseDtos = new ArrayList<>();
         for (Sales sales : salesList) {

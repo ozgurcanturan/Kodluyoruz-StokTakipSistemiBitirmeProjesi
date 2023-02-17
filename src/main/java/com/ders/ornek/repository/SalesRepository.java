@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface SalesRepository extends JpaRepository<Sales, Long> {
 
-    List<Sales> findAllSalesByCustomerId(Optional<Customer> customer);
+    List<Sales> findAllSalesByCustomerId(Long customerId);
 
-    List<Sales> findAllSalesByStockId(Stocks stocks);
+    List<Sales> findAllSalesByStockId(Long stockId);
 }
