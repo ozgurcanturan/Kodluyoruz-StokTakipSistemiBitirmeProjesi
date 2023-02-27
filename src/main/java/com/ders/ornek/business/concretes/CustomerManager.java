@@ -2,8 +2,8 @@ package com.ders.ornek.business.concretes;
 
 import com.ders.ornek.business.abstracts.CustomerService;
 import com.ders.ornek.dto.responseDtos.CustomerResponseDto;
-import com.ders.ornek.entity.Customer;
-import com.ders.ornek.repository.CustomerRepository;
+import com.ders.ornek.model.Customer;
+import com.ders.ornek.dao.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

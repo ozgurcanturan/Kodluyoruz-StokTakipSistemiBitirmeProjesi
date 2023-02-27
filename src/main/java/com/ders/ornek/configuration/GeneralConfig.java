@@ -1,12 +1,9 @@
 package com.ders.ornek.configuration;
 
-import com.ders.ornek.entity.*;
-import com.ders.ornek.entity.enums.StockCategorys;
-import com.ders.ornek.entity.enums.Units;
-import com.ders.ornek.repository.CustomerRepository;
-import com.ders.ornek.repository.ProductReturnRepository;
-import com.ders.ornek.repository.SalesRepository;
-import com.ders.ornek.repository.StocksRepository;
+import com.ders.ornek.model.*;
+import com.ders.ornek.model.enums.StockCategorys;
+import com.ders.ornek.model.enums.Units;
+import com.ders.ornek.dao.*;
 import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +23,24 @@ public class GeneralConfig {
     SalesRepository salesRepository;
     @Autowired
     ProductReturnRepository productReturnRepository;
+    @Autowired
+    private CorporateCustomerRepository corporateCustomerRepository;
 
-//    @PostConstruct
-//    public void initData() {
-//        initStock();
-//        initCorporateCustomerData();
-//        initIndividualCustomer();
-//        //initSales();
-//        initProductReturn();
-//    }
+    @PostConstruct
+    public void initData() {
+        initStock();
+        initCorporateCustomerData();
+        initIndividualCustomer();
+        //initSales();
+        initProductReturn();
+    }
 
 
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 
     private void initStock() {
         Stocks stock = new Stocks();
@@ -77,12 +77,18 @@ public class GeneralConfig {
         corporateCustomer.setTaxNumber(1234567890);
         corporateCustomer.setAddress("Tunceli/Merkez");
         corporateCustomer.setDiscount(0);
+        corporateCustomer.setUserName("deneme1");
+        corporateCustomer.setPassword("1234");
+        corporateCustomer.setEmail("asd5@gmail.com");
 
         CorporateCustomer corporateCustomer1 = new CorporateCustomer();
         corporateCustomer1.setName("Arslan Market");
         corporateCustomer1.setTaxNumber(1234567891);
         corporateCustomer1.setAddress("Tunceli/Mazgirt");
         corporateCustomer1.setDiscount(1);
+        corporateCustomer1.setUserName("deneme2");
+        corporateCustomer1.setPassword("1234");
+        corporateCustomer1.setEmail("asd4@gmail.com");
 
         customerRepository.saveAll(Arrays.asList(corporateCustomer, corporateCustomer1));
 
@@ -94,12 +100,18 @@ public class GeneralConfig {
         individualCustomer.setLastName("Turan");
         individualCustomer.setDiscount(0);
         individualCustomer.setNationalId("12345678901");
+        individualCustomer.setUserName("deneme3");
+        individualCustomer.setPassword("1234");
+        individualCustomer.setEmail("asd@gmail.com");
 
         IndividualCustomer individualCustomer1 = new IndividualCustomer();
         individualCustomer1.setName("Özge Elif");
         individualCustomer1.setLastName("Arslan");
         individualCustomer1.setDiscount(0);
         individualCustomer1.setNationalId("12345678902");
+        individualCustomer1.setUserName("deneme4");
+        individualCustomer1.setPassword("1234");
+        individualCustomer1.setEmail("asd1@gmail.com");
         customerRepository.saveAll(Arrays.asList(individualCustomer, individualCustomer1));
     }
 
@@ -109,6 +121,7 @@ public class GeneralConfig {
         individualCustomer.setLastName("Dönmez");
         individualCustomer.setDiscount(0);
         individualCustomer.setNationalId("12345678903");
+        individualCustomer.setEmail("asd2@gmail.com");
         customerRepository.save(individualCustomer);
 
         Stocks stock = new Stocks();
@@ -135,6 +148,9 @@ public class GeneralConfig {
         individualCustomer.setLastName("Balta");
         individualCustomer.setDiscount(0);
         individualCustomer.setNationalId("12345641903");
+        individualCustomer.setUserName("deneme5");
+        individualCustomer.setPassword("1234");
+        individualCustomer.setEmail("asd3@gmail.com");
         customerRepository.save(individualCustomer);
 
         Stocks stock = new Stocks();

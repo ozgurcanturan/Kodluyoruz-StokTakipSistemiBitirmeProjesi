@@ -3,16 +3,18 @@ package com.ders.ornek.business.concretes;
 import com.ders.ornek.business.abstracts.ProductReturnService;
 import com.ders.ornek.dto.requestDtos.ProductReturnRequestDto;
 import com.ders.ornek.dto.responseDtos.ProductReturnResponseDto;
-import com.ders.ornek.entity.ProductReturn;
-import com.ders.ornek.repository.CustomerRepository;
-import com.ders.ornek.repository.ProductReturnRepository;
-import com.ders.ornek.repository.StocksRepository;
+import com.ders.ornek.model.ProductReturn;
+import com.ders.ornek.exceptions.ProductReturnNotFoundException;
+import com.ders.ornek.dao.CustomerRepository;
+import com.ders.ornek.dao.ProductReturnRepository;
+import com.ders.ornek.dao.StocksRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductReturnManager implements ProductReturnService {
@@ -26,6 +28,12 @@ public class ProductReturnManager implements ProductReturnService {
     @Autowired
     StocksRepository stocksRepository;
 
+
+    @Override
+    public Optional<ProductReturn> findById(Long id) {
+        Optional<ProductReturn> productReturn = productReturnRepository.findById(id);
+        return productReturn;
+    }
 
     @Override
     public List<ProductReturnResponseDto> findAllProductReturn() {
@@ -75,11 +83,8 @@ public class ProductReturnManager implements ProductReturnService {
 
     @Override
     public Boolean DeleteProductReturnById(Long productReturnId) {
-        if (productReturnId > 0) {
+        ProductReturn productReturn = productReturnRepository.findById(productReturnId).orElseThrow(() -> new ProductReturnNotFoundException("Hata yakalandı, ID " + productReturnId + " bulunamadı."));
             productReturnRepository.deleteById(productReturnId);
             return true;
-        } else {
-            return false;
-        }
     }
 }

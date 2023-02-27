@@ -15,6 +15,7 @@ import java.util.List;
 public class IndividualCustomersController {
     private IndividualCustomerService individualcustomerService;
 
+
     @Autowired
     public IndividualCustomersController(IndividualCustomerService individualcustomerService) {
         this.individualcustomerService = individualcustomerService;
@@ -36,6 +37,7 @@ public class IndividualCustomersController {
     @DeleteMapping("/deleteIndividualCustomerById")
     public ResponseEntity<Boolean> deleteIndividualCustomerById(@RequestParam Long individualCustomerId) {
         boolean delete = individualcustomerService.deleteIndividualCustomerById(individualCustomerId);
-        return new ResponseEntity<>(delete, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
+
     }
 }

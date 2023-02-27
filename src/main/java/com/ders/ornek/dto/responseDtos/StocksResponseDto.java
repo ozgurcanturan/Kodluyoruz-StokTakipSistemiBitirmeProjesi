@@ -1,6 +1,6 @@
 package com.ders.ornek.dto.responseDtos;
 
-import com.ders.ornek.entity.enums.Units;
+import com.ders.ornek.model.enums.Units;
 import lombok.Data;
 
 @Data

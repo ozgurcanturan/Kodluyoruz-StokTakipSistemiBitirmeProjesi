@@ -47,6 +47,9 @@ public class SalesController {
     @DeleteMapping("/deleteSalesById")
     public ResponseEntity<Boolean> deleteSalesById(@RequestParam Long id) {
         boolean isDelete = salesService.deleteSalesById(id);
-        return new ResponseEntity<>(isDelete, HttpStatus.OK);
+        if (isDelete)
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        else
+            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
     }
 }

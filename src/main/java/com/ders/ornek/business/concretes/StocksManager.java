@@ -3,9 +3,9 @@ package com.ders.ornek.business.concretes;
 import com.ders.ornek.business.abstracts.StocksService;
 import com.ders.ornek.dto.requestDtos.StocksRequestDto;
 import com.ders.ornek.dto.responseDtos.StocksResponseDto;
-import com.ders.ornek.entity.Stocks;
+import com.ders.ornek.model.Stocks;
 import com.ders.ornek.exceptions.StockNotFoundException;
-import com.ders.ornek.repository.StocksRepository;
+import com.ders.ornek.dao.StocksRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,4 +50,5 @@ public class StocksManager implements StocksService {
         stocksRepository.deleteById(stockId);
         return true;
     }
+
 }

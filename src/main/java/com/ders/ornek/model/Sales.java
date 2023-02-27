@@ -1,6 +1,6 @@
-package com.ders.ornek.entity;
+package com.ders.ornek.model;
 
-import com.ders.ornek.entity.enums.Units;
+import com.ders.ornek.model.enums.Units;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,17 +33,12 @@ public class Sales {
     @Column(name = "sales_date")
 //    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, style = "dd/MM/yyyy hh:mm", pattern = "dd/MM/yyyy hh:mm")
 //    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
-    private LocalDateTime salesDate;
+    private LocalDateTime salesDate=LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "FK_SALES_CUSTOMER"))
     private Customer customer;
 
-
-    public void setSalesDate(LocalDateTime salesDate) {
-        salesDate = LocalDateTime.now();
-        this.salesDate = salesDate;
-    }
 
 }
 

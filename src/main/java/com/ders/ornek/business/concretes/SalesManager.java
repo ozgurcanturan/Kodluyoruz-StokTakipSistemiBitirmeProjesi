@@ -3,16 +3,18 @@ package com.ders.ornek.business.concretes;
 import com.ders.ornek.business.abstracts.SalesService;
 import com.ders.ornek.dto.requestDtos.SalesRequestDto;
 import com.ders.ornek.dto.responseDtos.SalesResponseDto;
-import com.ders.ornek.entity.Sales;
-import com.ders.ornek.repository.CustomerRepository;
-import com.ders.ornek.repository.SalesRepository;
-import com.ders.ornek.repository.StocksRepository;
+import com.ders.ornek.model.Sales;
+import com.ders.ornek.exceptions.SalesNotFoundException;
+import com.ders.ornek.dao.CustomerRepository;
+import com.ders.ornek.dao.SalesRepository;
+import com.ders.ornek.dao.StocksRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SalesManager implements SalesService {
@@ -24,6 +26,12 @@ public class SalesManager implements SalesService {
     private CustomerRepository customerRepository;
     @Autowired
     private StocksRepository stocksRepository;
+
+    @Override
+    public Optional<Sales> findById(Long id) {
+        Optional<Sales> sales = salesRepository.findById(id);
+        return sales;
+    }
 
     @Override
     public Long saveSales(SalesRequestDto salesRequestDto) {
@@ -80,11 +88,10 @@ public class SalesManager implements SalesService {
 
     @Override
     public Boolean deleteSalesById(Long salesId) {
-        if (salesId > 0) {
-            salesRepository.deleteById(salesId);
-            return true;
-        } else {
-            return false;
-        }
+        Sales sales = salesRepository.findById(salesId).orElseThrow(() -> new SalesNotFoundException("Hata yakalandı, ID " + salesId + " bulunamadı."));
+        salesRepository.deleteById(salesId);
+
+        return true;
+
     }
 }

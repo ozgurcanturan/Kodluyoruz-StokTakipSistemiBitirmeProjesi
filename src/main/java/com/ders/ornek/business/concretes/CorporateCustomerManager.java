@@ -3,10 +3,11 @@ package com.ders.ornek.business.concretes;
 import com.ders.ornek.business.abstracts.CorporateCustomerService;
 import com.ders.ornek.dto.requestDtos.CorporateCustomerRequestDto;
 import com.ders.ornek.dto.responseDtos.CorporateCustomerResponseDto;
-import com.ders.ornek.entity.CorporateCustomer;
-import com.ders.ornek.repository.CorporateCustomerRepository;
-import com.ders.ornek.repository.ProductReturnRepository;
-import com.ders.ornek.repository.SalesRepository;
+import com.ders.ornek.model.CorporateCustomer;
+import com.ders.ornek.exceptions.CustomerNotFoundException;
+import com.ders.ornek.dao.CorporateCustomerRepository;
+import com.ders.ornek.dao.ProductReturnRepository;
+import com.ders.ornek.dao.SalesRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,9 @@ public class CorporateCustomerManager implements CorporateCustomerService {
     }
 
 
-
     @Override
     public boolean deleteCorporateCustomerById(Long corporateCustomerId) {
+        CorporateCustomer corporateCustomer = corporateCustomerRepository.findById(corporateCustomerId).orElseThrow(() -> new CustomerNotFoundException("Hata yakalandı, ID " + corporateCustomerId + " bulunamadı."));
         corporateCustomerRepository.deleteById(corporateCustomerId);
         return true;
     }

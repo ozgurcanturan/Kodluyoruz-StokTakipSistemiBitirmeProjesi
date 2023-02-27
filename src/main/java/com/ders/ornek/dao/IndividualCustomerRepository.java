@@ -1,12 +1,8 @@
-package com.ders.ornek.repository;
+package com.ders.ornek.dao;
 
-import com.ders.ornek.entity.IndividualCustomer;
-import com.ders.ornek.entity.ProductReturn;
-import com.ders.ornek.entity.Sales;
+import com.ders.ornek.model.IndividualCustomer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface IndividualCustomerRepository extends JpaRepository<IndividualCustomer, Long> {

@@ -3,6 +3,7 @@ package com.ders.ornek.controller;
 import com.ders.ornek.business.abstracts.StocksService;
 import com.ders.ornek.dto.requestDtos.StocksRequestDto;
 import com.ders.ornek.dto.responseDtos.StocksResponseDto;
+import com.ders.ornek.exceptions.StockNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,9 @@ public class StocksController {
     @GetMapping("/findAllStocks")
     public ResponseEntity<List<StocksResponseDto>> findAllStocks() {
         List<StocksResponseDto> stocksResponseDtos = stocksService.findAllStocks();
-
+        if (stocksResponseDtos.isEmpty()) {
+            throw new StockNotFoundException("Hiç stok yok.");
+        }
         return new ResponseEntity<>(stocksResponseDtos, HttpStatus.OK);
     }
 

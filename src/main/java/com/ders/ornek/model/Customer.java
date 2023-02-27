@@ -1,11 +1,9 @@
-package com.ders.ornek.entity;
+package com.ders.ornek.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 
 @Entity
@@ -18,9 +16,11 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id;
-    @Column
     private String name;
-    @Column
     private double discount;
+    private String email;
+    private String userName;
+    private String password;
+
 
 }

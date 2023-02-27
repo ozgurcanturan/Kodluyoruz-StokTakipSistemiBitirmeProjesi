@@ -1,4 +1,4 @@
-package com.ders.ornek.entity.enums;
+package com.ders.ornek.model.enums;
 
 public enum StockCategorys {
     FOOD, BUTCHER,

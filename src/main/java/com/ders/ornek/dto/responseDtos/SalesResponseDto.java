@@ -1,7 +1,7 @@
 package com.ders.ornek.dto.responseDtos;
 
-import com.ders.ornek.entity.Customer;
-import com.ders.ornek.entity.Stocks;
+import com.ders.ornek.model.Customer;
+import com.ders.ornek.model.Stocks;
 import lombok.Data;
 
 import java.time.LocalDateTime;

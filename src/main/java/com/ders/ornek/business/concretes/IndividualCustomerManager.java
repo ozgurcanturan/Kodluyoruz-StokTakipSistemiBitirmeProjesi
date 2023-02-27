@@ -3,10 +3,11 @@ package com.ders.ornek.business.concretes;
 import com.ders.ornek.business.abstracts.IndividualCustomerService;
 import com.ders.ornek.dto.requestDtos.IndividualCustomerRequestDto;
 import com.ders.ornek.dto.responseDtos.IndividualCustomerResponseDto;
-import com.ders.ornek.entity.IndividualCustomer;
-import com.ders.ornek.repository.IndividualCustomerRepository;
-import com.ders.ornek.repository.ProductReturnRepository;
-import com.ders.ornek.repository.SalesRepository;
+import com.ders.ornek.model.IndividualCustomer;
+import com.ders.ornek.exceptions.CustomerNotFoundException;
+import com.ders.ornek.dao.IndividualCustomerRepository;
+import com.ders.ornek.dao.ProductReturnRepository;
+import com.ders.ornek.dao.SalesRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,14 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     private SalesRepository salesRepository;
     @Autowired
     private ProductReturnRepository productReturnRepository;
+
+
+    @Override
+    public IndividualCustomer findById(Long id) {
+
+        IndividualCustomer individualCustomer = individualCustomerRepository.getReferenceById(id);
+        return individualCustomer;
+    }
 
     @Override
     public Long saveIndividualCustomer(IndividualCustomerRequestDto individualCustomerRequestDto) {
@@ -46,6 +55,7 @@ public class IndividualCustomerManager implements IndividualCustomerService {
 
     @Override
     public boolean deleteIndividualCustomerById(Long individualCustomerId) {
+        IndividualCustomer individualCustomer = individualCustomerRepository.findById(individualCustomerId).orElseThrow(() -> new CustomerNotFoundException("Hata yakalandı, ID " + individualCustomerId + " bulunamadı."));
         individualCustomerRepository.deleteById(individualCustomerId);
         return true;
     }

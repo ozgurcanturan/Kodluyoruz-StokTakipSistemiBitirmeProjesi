@@ -1,6 +1,5 @@
 package com.ders.ornek.dto.requestDtos;
 
-import com.ders.ornek.entity.Customer;
 import lombok.Data;
 
 @Data

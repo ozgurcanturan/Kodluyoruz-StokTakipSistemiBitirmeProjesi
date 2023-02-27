@@ -1,6 +1,6 @@
-package com.ders.ornek.entity;
+package com.ders.ornek.model;
 
-import com.ders.ornek.entity.enums.Units;
+import com.ders.ornek.model.enums.Units;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

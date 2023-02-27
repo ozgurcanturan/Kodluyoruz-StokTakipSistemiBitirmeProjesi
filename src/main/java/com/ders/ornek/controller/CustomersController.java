@@ -2,6 +2,8 @@ package com.ders.ornek.controller;
 
 import com.ders.ornek.business.abstracts.CustomerService;
 import com.ders.ornek.dto.responseDtos.CustomerResponseDto;
+import com.ders.ornek.exceptions.CustomerNotFoundException;
+import com.ders.ornek.handler.CustomerExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,9 @@ public class CustomersController {
     @GetMapping("/findallcustomers")
     public ResponseEntity<List<CustomerResponseDto>> findAllCustomers() {
         List<CustomerResponseDto> customerResponseDtos = customerService.findAllCustomers();
+        if (customerResponseDtos.isEmpty()) {
+            throw new CustomerNotFoundException("Kullanıcı Bulunamadı");
+        }
         return new ResponseEntity<>(customerResponseDtos, HttpStatus.OK);
     }
 

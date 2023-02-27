@@ -1,9 +1,7 @@
-package com.ders.ornek.repository;
+package com.ders.ornek.dao;
 
 
-import com.ders.ornek.entity.Customer;
-import com.ders.ornek.entity.ProductReturn;
-import com.ders.ornek.entity.Stocks;
+import com.ders.ornek.model.ProductReturn;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
